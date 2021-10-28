@@ -1,7 +1,7 @@
 #include <stdio.h>
 //Biblioteca para o system("cls");, que serve para limpar a tela
 #include <windows.h>
-//Biblioteca para o rand();, que gera um nÃºmero aleatÃ³rio
+//Biblioteca para o rand();, que gera um número aleatório
 #include <stdlib.h>
 #include <time.h>
 
@@ -17,7 +17,7 @@
 //Campo
 int campo[DIMENSAO_X][DIMENSAO_Y][2];
 
-//FunÃ§Ãµes a serem utilizadas
+//Funções a serem utilizadas
 void inicializar_campo();
 void visualizar_campo(int estado);
 void preencher_espacos_livres(int pos_x, int pos_y);
@@ -41,7 +41,7 @@ int main(){
 
         scanf(" %c%d", &coluna, &linha);
         coluna = coluna - 'a';
-        //Checando o que tem na posiÃ§Ã£o inserida
+        //Checando o que tem na posição inserida
         if(linha>=0 && linha<DIMENSAO_X && coluna>=0 && coluna<DIMENSAO_Y){
             inspecao = checar_mina(linha, coluna);
 
@@ -70,7 +70,7 @@ int main(){
 
 void inicializar_campo(){
     int pos_bomba_x, pos_bomba_y, bombas_postas=0, bombas_encontradas;
-    //Inicializando o campo com zeros(nenhuma bomba) e todas as posiÃ§Ãµes desconhecidas
+    //Inicializando o campo com zeros(nenhuma bomba) e todas as posições desconhecidas
     for(int i=0; i<DIMENSAO_X;i++){
         for(int j=0; j<DIMENSAO_Y;j++){
             campo[i][j][0] = 0;
@@ -88,7 +88,7 @@ void inicializar_campo(){
             bombas_postas++;
         }
     }
-	//Colocando o nÃºmero referente Ã  quantidade de bombas ao redor de uma casa
+	//Colocando o número referente à quantidade de bombas ao redor de uma casa
 	for(int i=0; i<DIMENSAO_X;i++){
         for(int j=0; j<DIMENSAO_Y;j++){
         	if(campo[i][j][0] != BOMBA){
@@ -161,7 +161,7 @@ void visualizar_campo(int estado =1){
     }
 }
 
-//Verifica se hÃ¡ mina em uma dada posiÃ§Ã£o
+//Verifica se há mina em uma dada posição
 int checar_mina(int pos_x, int pos_y){
     if(campo[pos_x][pos_y][0] != BOMBA){
         campo[pos_x][pos_y][1] = CONHECIDO;
@@ -172,7 +172,7 @@ int checar_mina(int pos_x, int pos_y){
     }
 }
 
-//Preenche todos os espaÃ§os livres adjacentes (que nÃ£o tem nenhuma bomba ao redor deles)
+//Preenche todos os espaços livres adjacentes (que não tem nenhuma bomba ao redor deles)
 void preencher_espacos_livres(int pos_x, int pos_y){
     if(campo[pos_x][pos_y][0]==0){
         for(int linha=pos_x-1; linha<=pos_x+1; linha++){
@@ -193,7 +193,7 @@ void preencher_espacos_livres(int pos_x, int pos_y){
     
 }
 
-//Verifica se o usuÃ¡rio checou todas as casas sem bombas
+//Verifica se o usuário checou todas as casas sem bombas
 int checar_pontuacao(){
     int qtd_conhecidos = 0;
 	for(int i=0; i<DIMENSAO_X; i++){
@@ -206,7 +206,7 @@ int checar_pontuacao(){
     return qtd_conhecidos;
 }
 
-//Verifica se o usuÃ¡rio checou todas as casas sem bombas
+//Verifica se o usuário checou todas as casas sem bombas
 int checar_vitoria(){
     int qtd_desconhecidos = 0;
 	for(int i=0; i<DIMENSAO_X; i++){
